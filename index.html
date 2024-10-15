@@ -6,7 +6,7 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>RelationBooth: Towards Relation-aware Customized Object Generation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -52,13 +52,13 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
+      <a class="navbar-item" href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
       </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More Research
         </a>
@@ -76,7 +76,7 @@
             PhotoShape
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -88,32 +88,37 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">RelationBooth: Towards Relation-aware Customized Object Generation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">Qingyu Shi</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="http://luqi.info/">Lu Qi</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://jianzongwu.github.io/">Jianzong Wu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+              <a href="https://noyii.github.io/">Jinbin Bai</a><sup>3</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>4</sup>,
             </span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+              <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ&hl=zh-CN">Yunhai Tong</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>2</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Peking University,</span>
+            <span class="author-block"><sup>2</sup>UC, Merced,</span>
+            <span class="author-block"><sup>3</sup>National University of Singapore,</span>
+            <span class="author-block"><sup>4</sup>Shanghai AI Laboratory,</span>
           </div>
 
           <div class="column has-text-centered">
@@ -178,73 +183,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img src="static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        <span class="dnerf"> Relation-aware image customization, the generated image should strictly keep the predicate relation and preserve each identity among those identities provided by the text prompt.
       </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -258,31 +200,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Customized image generation is crucial for delivering personalized content based on user-provided image prompts, aligning large-scale text-to-image diffusion models with individual needs. 
+            However, existing models often overlook the relationships between customized objects in generated images. 
+            Instead, this work addresses that gap by focusing on relation-aware customized image generation, which aims to preserve the identities from image prompts while maintaining the predicate relations described in text prompts. 
+            Specifically, we introduce RelationBooth, a framework that disentangles identity and relation learning through a well-curated dataset. 
+            Our training data consists of relation-specific images, independent object images containing identity information, and text prompts to guide relation generation. 
+            Then, we propose two key modules to tackle the two main challenges—generating accurate and natural relations, especially when significant pose adjustments are required, and avoiding object confusion in cases of overlap. 
+            First, we introduce a keypoint matching loss that effectively guides the model in adjusting object poses closely tied to their relationships.
+            Second, we incorporate local features from the image prompts to better distinguish between objects, preventing confusion in overlapping cases. 
+            Extensive results on three benchmarks demonstrate the superiority of RelationBooth in generating precise relations while preserving object identities across a diverse set of objects and relations.
+            The source code and trained models will be made available to the public. 
           </p>
         </div>
       </div>
@@ -290,7 +217,7 @@
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -298,7 +225,7 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
   </div>
 </section>
@@ -306,150 +233,161 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+    <!-- Background. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Background</h2>
         <div class="content has-text-justified">
           <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            Customized image generation has made significant progress, driven by advancements in large-scale text-to-image diffusion models like Stable Diffusion and Imagen. 
+            These methods have enabled the generation of personalized content by preserving the identity of objects specified by user inputs, 
+            proving valuable in areas such as personalized artwork, branding, virtual fashion, social media content, and augmented reality. 
+            However, existing techniques primarily focus on individual object customization, often neglecting the importance of relationships between objects in the context of the provided text prompts. 
+            Addressing this gap, relation-aware customized image generation emphasizes not only preserving the identity of multiple objects 
+            but also accurately capturing the relationships described in the text prompts, presenting new challenges and opportunities in this field.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
+    <!--/ Background. -->
+  </div>
+</section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Approach. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our approach tackles the challenges in relation-aware customized image generation by addressing data limitations and model design. 
+            We propose using triplets of images—two image prompts and one target image—with the prompts depicting similar objects in distinct actions relative to the target image. 
+            Leveraging an advanced text-to-image generation model, we ensure object consistency across the triplets while varying the actions, enabling focused relationship learning during fine-tuning.
+          </p>
+          <p>
+            In terms of model design, we introduce RelationBooth, which utilizes the Low-Rank Adaptation (LoRA) strategy to adapt the text cross-attention layers of diffusion models. 
+            In RelationBooth, two key modules are introduced during training to enhance the customization of relationships and identity preservation.
+            First, we introduce a keypoint matching loss (KML) as additional supervision to explicitly encourage the model to adjust object poses, 
+            since relationships between objects are closely tied to their poses. 
+            Importantly, the KML operates on the latent representation rather than the original image space, aligning with the default diffusion loss. 
+            Second, we inject local tokens for multiple objects to improve the distinctiveness of highly overlapping objects. 
+            Specifically, we employ the self-distillation method from CLIPSelf to enhance region-language alignment in CLIP's dense features. 
+            Through partitioning and pooling, the well-aligned local tokens help mitigate appearance confusion between objects.
+          </p>
+          <img src="static/images/pipeline_new.png" alt="Pipeline" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="static/images/data_engine.png" alt="Data Engine" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Approach. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            To comprehensively evaluate relation-aware customized image generation, 
+            we developed RelationBench, building on two well-established benchmarks, DreamBench and CustomConcept101. 
+            Our methods demonstrated strong performance, with the generated images closely adhering to the relationships 
+            specified in the text prompts and maintaining the identities from the image prompts, 
+            achieving significant improvements in both visual quality and quantitative results.
+          </p>
+          <figcaption style="text-align: center;">Same object with different relations.</figcaption>
+          <img src="static/images/main_results_multi.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Same relation with different objects.</figcaption>
+          <img src="static/images/main_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Qualititive results comparison.</figcaption>
+          <img src="static/images/multi_comparison.png" alt="Multi Comparison Image" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Quantitative results on RelationBench.</figcaption>
+          <img src="static/images/tab_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
   </div>
 </section>
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Ablation</h2>
+        <div class="content has-text-justified">
+          <p>
+            In our project, we explored several techniques to enhance relation-aware image generation. 
+            First, we experimented with fine-tuning text embeddings in using blank image prompts, 
+            but this underperformed due to entanglement of identity and relation information. 
+            Next, we observed that including Keypoint Matching Loss (KML) significantly improved image quality and accuracy. 
+            Lastly, local token injection was crucial for preventing object confusion. 
+            These combined approaches enable high-quality, relation-aware image customization.
+          </p>
+          <img src="./static/images/ablation_data.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="./static/images/ablation.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="./static/images/append_abl.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">For Relation Inversion Task</h2>
+        <div class="content has-text-justified">
+          <p>
+            Notably, after fine-tuning, our RelationLoRA can also be directly integrated
+            into SDXL, effectively enabling the model to address the relation inversion task.
+          </p>
+          <div class="content has-text-justified">
+            <img src="./static/images/relation_inversion.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Incorporate with CogVideoX-5b-I2V</h2>
+        <div class="content has-text-justified">
+          
+          <!-- Video Container -->
+          <div id="video-carousel" class="video-carousel" style="display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 50px;">
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_dog_is_shaking_hands_with_a_plushie_bear.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_dog_is_shaking_hands_with_a_plushie_panda.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_plushie_cat_is_shaking_hands_with_a_dog.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
   </div>
 </section>
 
