@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RelationBooth: Towards Relation-aware Customized Object Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RelationBooth: Towards Relation-aware Customized Object Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">Qingyu Shi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="http://luqi.info/">Qi Lu</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jianzongwu.github.io/">Jianzong Wu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://noyii.github.io/">Jinbin Bai</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ&hl=zh-CN">Yunhai Tong</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>5</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Peking University,</span>
+            <span class="author-block"><sup>2</sup>UC, Merced,</span>
+            <span class="author-block"><sup>3</sup>National University of Singapore,</span>
+            <span class="author-block"><sup>4</sup>Shanghai AI Laboratory,</span>
+            <span class="author-block"><sup>5</sup>Nanyang Technological University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> Relation-aware image customization, the generated image should strictly keep the predicate relation and preserve each identity among those identities provided by the text prompt.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Customized image generation is crucial for delivering personalized content based on user-provided image prompts, aligning large-scale text-to-image diffusion models with individual needs. 
+            However, existing models often overlook the relationships between customized objects in generated images. 
+            Instead, this work addresses that gap by focusing on relation-aware customized image generation, which aims to preserve the identities from image prompts while maintaining the predicate relations described in text prompts. 
+            Specifically, we introduce RelationBooth, a framework that disentangles identity and relation learning through a well-curated dataset. 
+            Our training data consists of relation-specific images, independent object images containing identity information, and text prompts to guide relation generation. 
+            Then, we propose two key modules to tackle the two main challenges—generating accurate and natural relations, especially when significant pose adjustments are required, and avoiding object confusion in cases of overlap. 
+            First, we introduce a keypoint matching loss that effectively guides the model in adjusting object poses closely tied to their relationships.
+            Second, we incorporate local features from the image prompts to better distinguish between objects, preventing confusion in overlapping cases. 
+            Extensive results on three benchmarks demonstrate the superiority of RelationBooth in generating precise relations while preserving object identities across a diverse set of objects and relations.
+            The source code and trained models will be made available to the public. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Background. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Background</h2>
+        <div class="content has-text-justified">
+          <p>
+            Customized image generation has made significant progress, driven by advancements in large-scale text-to-image diffusion models like Stable Diffusion and Imagen. 
+            These methods have enabled the generation of personalized content by preserving the identity of objects specified by user inputs, 
+            proving valuable in areas such as personalized artwork, branding, virtual fashion, social media content, and augmented reality. 
+            However, existing techniques primarily focus on individual object customization, often neglecting the importance of relationships between objects in the context of the provided text prompts. 
+            Addressing this gap, relation-aware customized image generation emphasizes not only preserving the identity of multiple objects 
+            but also accurately capturing the relationships described in the text prompts, presenting new challenges and opportunities in this field.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Background. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Approach. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our approach tackles the challenges in relation-aware customized image generation by addressing data limitations and model design. 
+            We propose using triplets of images—two image prompts and one target image—with the prompts depicting similar objects in distinct actions relative to the target image. 
+            Leveraging an advanced text-to-image generation model, we ensure object consistency across the triplets while varying the actions, enabling focused relationship learning during fine-tuning.
+          </p>
+          <p>
+            In terms of model design, we introduce RelationBooth, which utilizes the Low-Rank Adaptation (LoRA) strategy to adapt the text cross-attention layers of diffusion models. 
+            In RelationBooth, two key modules are introduced during training to enhance the customization of relationships and identity preservation.
+            First, we introduce a keypoint matching loss (KML) as additional supervision to explicitly encourage the model to adjust object poses, 
+            since relationships between objects are closely tied to their poses. 
+            Importantly, the KML operates on the latent representation rather than the original image space, aligning with the default diffusion loss. 
+            Second, we inject local tokens for multiple objects to improve the distinctiveness of highly overlapping objects. 
+            Specifically, we employ the self-distillation method from CLIPSelf to enhance region-language alignment in CLIP's dense features. 
+            Through partitioning and pooling, the well-aligned local tokens help mitigate appearance confusion between objects.
+          </p>
+          <img src="static/images/pipeline_new.png" alt="Pipeline" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="static/images/data_engine.png" alt="Data Engine" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Approach. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            To comprehensively evaluate relation-aware customized image generation, 
+            we developed RelationBench, building on two well-established benchmarks, DreamBench and CustomConcept101. 
+            Our methods demonstrated strong performance, with the generated images closely adhering to the relationships 
+            specified in the text prompts and maintaining the identities from the image prompts, 
+            achieving significant improvements in both visual quality and quantitative results.
+          </p>
+          <figcaption style="text-align: center;">Same object with different relations.</figcaption>
+          <img src="static/images/main_results_multi.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Same relation with different objects.</figcaption>
+          <img src="static/images/main_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Qualititive results comparison.</figcaption>
+          <img src="static/images/multi_comparison.png" alt="Multi Comparison Image" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <figcaption style="text-align: center;">Quantitative results on RelationBench.</figcaption>
+          <img src="static/images/tab_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Ablation</h2>
+        <div class="content has-text-justified">
+          <p>
+            In our project, we explored several techniques to enhance relation-aware image generation. 
+            First, we experimented with fine-tuning text embeddings in using blank image prompts, 
+            but this underperformed due to entanglement of identity and relation information. 
+            Next, we observed that including Keypoint Matching Loss (KML) significantly improved image quality and accuracy. 
+            Lastly, local token injection was crucial for preventing object confusion. 
+            These combined approaches enable high-quality, relation-aware image customization.
+          </p>
+          <img src="./static/images/ablation_data.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="./static/images/ablation.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="./static/images/append_abl.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">For Relation Inversion Task</h2>
+        <div class="content has-text-justified">
+          <p>
+            Notably, after fine-tuning, our RelationLoRA can also be directly integrated
+            into SDXL, effectively enabling the model to address the relation inversion task.
+          </p>
+          <div class="content has-text-justified">
+            <img src="./static/images/relation_inversion.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Incorporate with CogVideoX-5b-I2V</h2>
+        <div class="content has-text-justified">
+          
+          <!-- Video Container -->
+          <div id="video-carousel" class="video-carousel" style="display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 50px;">
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_dog_is_shaking_hands_with_a_plushie_bear.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_dog_is_shaking_hands_with_a_plushie_panda.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <video controls autoplay muted loop playsinline style="max-width: 100%; height: auto;">
+              <source src="./static/videos/A_plushie_cat_is_shaking_hands_with_a_dog.jpg.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
