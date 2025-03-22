@@ -6,7 +6,7 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RelationBooth: Towards Relation-aware Customized Object Generation</title>
+  <title>DreamRelation: Bridging Customization and Relation Generation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -107,16 +107,13 @@
               <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ&hl=zh-CN">Yunhai Tong</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>2</sup>
+              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Peking University,</span>
-            <span class="author-block"><sup>2</sup>UC, Merced,</span>
+            <span class="author-block"><sup>2</sup>Insta360 Research,</span>
             <span class="author-block"><sup>3</sup>National University of Singapore,</span>
             <span class="author-block"><sup>4</sup>Shanghai AI Laboratory,</span>
           </div>
@@ -200,16 +197,19 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Customized image generation is crucial for delivering personalized content based on user-provided image prompts, aligning large-scale text-to-image diffusion models with individual needs. 
-            However, existing models often overlook the relationships between customized objects in generated images. 
-            Instead, this work addresses that gap by focusing on relation-aware customized image generation, which aims to preserve the identities from image prompts while maintaining the predicate relations described in text prompts. 
-            Specifically, we introduce RelationBooth, a framework that disentangles identity and relation learning through a well-curated dataset. 
-            Our training data consists of relation-specific images, independent object images containing identity information, and text prompts to guide relation generation. 
-            Then, we propose two key modules to tackle the two main challenges—generating accurate and natural relations, especially when significant pose adjustments are required, and avoiding object confusion in cases of overlap. 
-            First, we introduce a keypoint matching loss that effectively guides the model in adjusting object poses closely tied to their relationships.
-            Second, we incorporate local features from the image prompts to better distinguish between objects, preventing confusion in overlapping cases. 
-            Extensive results on three benchmarks demonstrate the superiority of RelationBooth in generating precise relations while preserving object identities across a diverse set of objects and relations.
-            The source code and trained models will be made available to the public. 
+            Customized image generation is essential for creating personalized content based on user prompts, 
+            allowing large-scale text-to-image diffusion models to more effectively meet individual needs. 
+            However, existing models often neglect the relationships between customized objects in generated images. 
+            In contrast, this work addresses this gap by focusing on relation-aware customized image generation, 
+            which seeks to preserve the identities from image prompts while maintaining the relationship specified in text prompts. 
+            Specifically, we introduce DreamRelation, a framework that disentangles identity and relation learning using a carefully curated dataset. 
+            Our training data consists of relation-specific images, independent object images containing identity information, 
+            and text prompts to guide relation generation. Then, we propose two key modules to tackle the two main challenges: 
+            generating accurate and natural relationships, especially when significant pose adjustments are required, 
+            and avoiding object confusion in cases of overlap. 
+            First, we introduce a keypoint matching loss that effectively guides the model in adjusting object poses closely tied to their relationships. 
+            Second, we incorporate local features of the image prompts to better distinguish between objects, preventing confusion in overlapping cases. 
+            Extensive results on our proposed benchmarks demonstrate the superiority of DreamRelation in generating precise relations while preserving object identities across a diverse set of objects and relationships.
           </p>
         </div>
       </div>
