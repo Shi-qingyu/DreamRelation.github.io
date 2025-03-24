@@ -91,31 +91,34 @@
           <h1 class="title is-1 publication-title">DreamRelation: Bridging Customization and Relation Generation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">Qingyu Shi</a><sup>1</sup>,</span>
+              <a href="https://scholar.google.com.hk/citations?user=VpSqhJAAAAAJ&hl=zh-CN">Qingyu Shi</a><sup>1</sup>,
+            </span>
             <span class="author-block">
-              <a href="http://luqi.info/">Lu Qi</a><sup>2</sup>,</span>
+              <a href="http://luqi.info/">Lu Qi</a><sup>2</sup>,
+            </span>
             <span class="author-block">
               <a href="https://jianzongwu.github.io/">Jianzong Wu</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://noyii.github.io/">Jinbin Bai</a><sup>3</sup>,
+              <a href="https://noyii.github.io/">Jinbin Bai</a><sup>4</sup>,
             </span>
             <span class="author-block">
-              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>4</sup>,
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>5</sup>,
             </span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ&hl=zh-CN">Yunhai Tong</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>1</sup>
+              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>3,5</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Peking University,</span>
             <span class="author-block"><sup>2</sup>Insta360 Research,</span>
-            <span class="author-block"><sup>3</sup>National University of Singapore,</span>
-            <span class="author-block"><sup>4</sup>Shanghai AI Laboratory,</span>
+            <span class="author-block"><sup>3</sup>Nanyang Technological University,</span>
+            <span class="author-block"><sup>4</sup>National University of Singapore,</span>
+            <span class="author-block"><sup>5</sup>Shanghai AI Laboratory</span>
           </div>
 
           <div class="column has-text-centered">
@@ -235,7 +238,7 @@
   <div class="container is-max-desktop">
     <!-- Background. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-five-fifths">
         <h2 class="title is-3">Background</h2>
         <div class="content has-text-justified">
           <p>
@@ -255,42 +258,55 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Approach. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Approach</h2>
-        <div class="content has-text-justified">
-          <p>
-            Our approach tackles the challenges in relation-aware customized image generation by addressing data limitations and model design. 
-            We propose using triplets of images—two image prompts and one target image—with the prompts depicting similar objects in distinct actions relative to the target image. 
-            Leveraging an advanced text-to-image generation model, we ensure object consistency across the triplets while varying the actions, enabling focused relationship learning during fine-tuning.
-          </p>
-          <p>
-            In terms of model design, we introduce RelationBooth, which utilizes the Low-Rank Adaptation (LoRA) strategy to adapt the text cross-attention layers of diffusion models. 
-            In RelationBooth, two key modules are introduced during training to enhance the customization of relationships and identity preservation.
-            First, we introduce a keypoint matching loss (KML) as additional supervision to explicitly encourage the model to adjust object poses, 
-            since relationships between objects are closely tied to their poses. 
-            Importantly, the KML operates on the latent representation rather than the original image space, aligning with the default diffusion loss. 
-            Second, we inject local tokens for multiple objects to improve the distinctiveness of highly overlapping objects. 
-            Specifically, we employ the self-distillation method from CLIPSelf to enhance region-language alignment in CLIP's dense features. 
-            Through partitioning and pooling, the well-aligned local tokens help mitigate appearance confusion between objects.
-          </p>
-          <img src="static/images/pipeline_new.png" alt="Pipeline" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <img src="static/images/data_engine.png" alt="Data Engine" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-        </div>
+    <!-- 文本部分 -->
+    <div class="content">
+      <h2 class="title is-3 has-text-centered">Approach</h2>
+      <!-- 图像部分 -->
+      <div class="has-text-centered" style="margin-bottom: 20px;">
+        <img src="static/images/pipeline_new.png" alt="Pipeline" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        <!-- <img src="static/images/data_engine.png" alt="Data Engine" style="max-width: 50%; height: auto;"> -->
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          We attribute the failure to two key factors: a lack of relevant data and an ineffective model design. Unlike data
+          augmentation techniques such as flipping or rotation, commonly used to create paired training data in object customization methods, our approach requires a triplet
+          of images: two image prompts and one target image. The
+          image prompts should contain similar objects but exhibit
+          distinct poses compared to the target image. To collect
+          these triplets, we propose a data engine to curate our finetuning set. We leverage an advanced text-to-image generation model 
+          to generate triplets where the same object pair is shared across the images. Through text prompt guidance, 
+          the image prompt provides strong identity information. This enables the decoupling of the relationship in the
+          target image, which enhances the relation learning.
+        </p>
+        <p>
+          For the model design, we propose DreamRelation, which applies the Low-Rank Adaptation (LoRA) strategy to the text cross-attention layers of existing diffusion models to process user-provided text prompts. 
+          In DreamRelation, two key modules are introduced during training to enhance the relation generation in customized generation. 
+          First, we introduce a keypoint matching loss (KML) as additional supervision to explicitly encourage the model to
+          manipulate object poses, since relationships between objects are closely tied to their poses. Importantly, the KML
+          operates on the latent representation rather than the original image space, aligning with the default diffusion loss.
+          Second, since relation-aware customization requires local features from image prompts, such as the “hands” features
+          for generating “shaking hands”—which are not captured by CLIP's coarse image-level features, we introduce dense fea-
+          tures from CLIP. Through partitioning and pooling, we obtain local tokens that contain detail and local information.
+          To further enhance the compatibility between dense features and image-level features, we employ a self-distillation
+          method to improve their alignment.
+        </p>
       </div>
     </div>
-    <!--/ Approach. -->
   </div>
 </section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Results. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-five-fifths">
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
+          <img src="static/images/main_results_multi.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="static/images/main_results.png" alt="Results of DreamRelation" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="static/images/multi_comparison.png" alt="Multi Comparison Image" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+          <img src="static/images/tab_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
           <p>
             To comprehensively evaluate relation-aware customized image generation, 
             we developed RelationBench, building on two well-established benchmarks, DreamBench and CustomConcept101. 
@@ -298,14 +314,6 @@
             specified in the text prompts and maintaining the identities from the image prompts, 
             achieving significant improvements in both visual quality and quantitative results.
           </p>
-          <figcaption style="text-align: center;">Same object with different relations.</figcaption>
-          <img src="static/images/main_results_multi.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <figcaption style="text-align: center;">Same relation with different objects.</figcaption>
-          <img src="static/images/main_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <figcaption style="text-align: center;">Qualititive results comparison.</figcaption>
-          <img src="static/images/multi_comparison.png" alt="Multi Comparison Image" style="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <figcaption style="text-align: center;">Quantitative results on RelationBench.</figcaption>
-          <img src="static/images/tab_results.png" alt="Results of RelationBooth" style="max-width: 100%; height: auto; margin-bottom: 20px;">
         </div>
       </div>
     </div>
@@ -318,8 +326,25 @@
   <div class="container is-max-desktop">
     <!-- Results. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-five-fifths">
         <h2 class="title is-3">Ablation</h2>
+        <!-- 图片部分 -->
+        <div class="content">
+          <!-- 第一张图片单独显示 -->
+          <div class="has-text-centered" style="margin-bottom: 20px;">
+            <img src="./static/images/ablation_rv.png" alt="Chair TP" style="max-width: 100%; height: auto;">
+          </div>
+          <!-- 第二组图片并排显示 -->
+          <div class="columns is-centered" style="margin-bottom: 20px;">
+            <div class="column is-half has-text-centered">
+              <img src="./static/images/ablation_vertical.png" alt="Steve" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="column is-half has-text-centered">
+              <img src="./static/images/append_abl.png" alt="Chair TP" style="max-width: 100%; height: auto;">
+            </div>
+          </div>
+        </div>
+        <!-- 文本部分 -->
         <div class="content has-text-justified">
           <p>
             In our project, we explored several techniques to enhance relation-aware image generation. 
@@ -329,9 +354,6 @@
             Lastly, local token injection was crucial for preventing object confusion. 
             These combined approaches enable high-quality, relation-aware image customization.
           </p>
-          <img src="./static/images/ablation_data.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <img src="./static/images/ablation.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
-          <img src="./static/images/append_abl.png" alt="Chair TP" height="max-width: 100%; height: auto; margin-bottom: 20px;">
         </div>
       </div>
     </div>
@@ -339,20 +361,21 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Results. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-five-fifths">
         <h2 class="title is-3">For Relation Inversion Task</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/relation_inversion.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
+        </div>
         <div class="content has-text-justified">
           <p>
             Notably, after fine-tuning, our RelationLoRA can also be directly integrated
             into SDXL, effectively enabling the model to address the relation inversion task.
           </p>
-          <div class="content has-text-justified">
-            <img src="./static/images/relation_inversion.png" alt="Steve" height="max-width: 100%; height: auto; margin-bottom: 20px;">
-          </div>
         </div>
       </div>
     </div>
